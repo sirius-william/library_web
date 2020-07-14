@@ -8,9 +8,10 @@ package com.sirius.domain;
 
 public class UserId {
     private Integer id;
-    private char flag;
+    // flag为id状态，1表示正在使用已经被注册；0表示空闲未被使用；2表示冻结
+    private Integer flag;
 
-    public UserId(Integer id, char flag) {
+    public UserId(Integer id, Integer flag) {
         this.id = id;
         this.flag = flag;
     }
@@ -23,11 +24,11 @@ public class UserId {
         this.id = id;
     }
 
-    public char getFlag() {
+    public Integer getFlag() {
         return flag;
     }
 
-    public void setFlag(char flag) {
+    public void setFlag(Integer flag) {
         this.flag = flag;
     }
 }

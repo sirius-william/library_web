@@ -10,7 +10,7 @@
     <select id="selectAllByStatus" resultType="UserId">
         select id, flag from tb_userid where flag = #{status};
     </select>
-    <select id="selectStatusById" resultType="java.lang.Character">
+    <select id="selectStatusById" resultType="java.lang.Integer">
         select flag from tb_userid where id = #{id};
     </select>
     <select id="selectMaxId" resultType="java.lang.Integer">
@@ -28,6 +28,6 @@
     </insert>
 <!--update-->
     <update id="updateStatus">
-        update tb_userid set flag = #{status} where id = #{id};
+        update tb_userid set flag = #{flag} where id = #{id};
     </update>
 </mapper>

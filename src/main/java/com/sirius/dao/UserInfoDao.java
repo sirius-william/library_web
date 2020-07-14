@@ -1,6 +1,7 @@
 package com.sirius.dao;
 
 import com.sirius.domain.UserInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,9 @@ public interface UserInfoDao {
     ArrayList<UserInfo> selectByCondition(UserInfo userInfo);
     /*修改*/
     // 修改对象
-    int updateUserInfo(UserInfo oldUserInfo, UserInfo newUserInfo);
+    int updateUserInfo(@Param("oldUserInfo") UserInfo oldUserInfo, @Param("newUserInfo") UserInfo newUserInfo);
     // 根据id
-    int updateUserInfoById(Integer id, UserInfo newUserInfo);
+    int updateUserInfoById(@Param("id") Integer id, @Param("newUserInfo") UserInfo newUserInfo);
     /*删除*/
     // 根据id删除
     int deleteUserInfoById(Integer id);

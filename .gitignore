@@ -1,4 +1,5 @@
 *.class
 *.properties
-src/test
-.idea/
+/src/test/
+/target/
+/.idea/
