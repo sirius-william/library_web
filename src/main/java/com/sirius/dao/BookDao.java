@@ -31,11 +31,17 @@ public interface BookDao {
     int insertBook(Book book);
     /*修改*/
     // 根据ISBN修改
-    int updateBookByName(String isbn, Book book);
+    int updateBookByISBN(String oldIsbn, String newIsbn);
     // 根据id修改
-    int updateBookById(Integer id, Book book);
+    int updateBookById(Integer oldId, String newId);
     // 根据对象修改
     int updateBook(Book oldBook, Book newBook);
+    // 修改余量
+    int updateRemain(Book book, Integer newRemain);
+    // 修改预定量
+    int updateOrdered(Book book, Integer newOrdered);
+    // 修改总量
+    int updateTotal(Book book, Integer newTotal);
     /*删除*/
     // 根据ISBN删除
     int deleteByISBN(String isbn);

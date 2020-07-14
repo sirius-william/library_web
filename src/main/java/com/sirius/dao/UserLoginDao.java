@@ -13,6 +13,10 @@ public interface UserLoginDao {
     ArrayList<UserLogin> selectUserLoginByTimeSection(Date left, Date right);
     // 根据id查询
     UserLogin selectUserLoginById(Integer id);
+    // 登录查询
+    UserLogin loginCheck(String username, String password);
+    // 盐值查询
+    String selectSalt(String username);
     /*修改*/
     // 根据用户名修改密码
     int updatePasswordByName(String username, String password, String salt);
@@ -29,14 +33,4 @@ public interface UserLoginDao {
     /*添加*/
     // 添加UserLogin
     int insertUserLogin(UserLogin userLogin);
-    /*删除*/
-    // 根据id删除
-    int deleteUserLoginById(Integer id);
-    // 根据用户名删除
-    int deleteUserLoginByUserName(String username);
-    // 根据登录时间区间删除
-    int deleteUserLoginByTimeSection(Date left, Date right);
-    // 根据对象删除
-    int deleteUserLogin(UserLogin userLogin);
-
 }
