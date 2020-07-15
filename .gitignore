@@ -1,5 +1,3 @@
-*.class
-*.properties
 /src/test/
 /target/
 /.idea/
