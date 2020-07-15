@@ -11,7 +11,7 @@
 + Dao层<br/>
 &#8195;&#8195;用接口方式与mapper操作数据库，变量别名采用@Param注释。
 
-#pull代码后需要做的事
+# pull代码后需要做的事
 + pull代码后，需要在src/main/resources内加入properties文件夹，文件夹内加入jdbc.properties文件来配置数据库信息。或修改conf/applicationContext.xml内context:property-placeholder标签指向的properties文件位置，并检查druid中配置信息。
 + MySQL驱动为：com.mysql.cj.jdbc.Driver
 #版本信息
