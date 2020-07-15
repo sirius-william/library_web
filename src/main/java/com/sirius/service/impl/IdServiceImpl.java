@@ -19,7 +19,7 @@ public class IdServiceImpl implements IdService {
     public Integer addId() {
         // 获取数据库内id的最大值
         Integer maxId = userIdDao.selectMaxId();
-        if(maxId == null){
+        if (maxId == null) {
             maxId = 1000000;
         }
         // 生成id
@@ -57,7 +57,61 @@ public class IdServiceImpl implements IdService {
         return success == 1;
     }
 
+    @Override
+    public Integer addId(Integer status) {
+        int newId = userIdDao.selectMaxId() + 1;
+        int success = userIdDao.insertById(newId, status);
+        if (success == 1) {
+            return newId;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Integer> addIds(Integer nums, Integer flag) {
+        ArrayList<Integer> idList = new ArrayList<>();
+        int newIds = userIdDao.selectMaxId();
+        while (idList.size() < nums) {
+            newIds = newIds + 1;
+            int success = userIdDao.insertById(newIds, flag);
+            if (success == 1) {
+                idList.add(newIds);
+            }
+        }
+        return idList;
+    }
+
+    @Override
+    public Integer showStatus(Integer id) {
+        return userIdDao.selectStatusById(id);
+    }
+
+    @Override
+    public Integer showMaxIdByStatus(Integer status) {
+        return userIdDao.selectMaxIdByStatus(status);
+    }
+
     public void setUserIdDao(UserIdDao userIdDao) {
         this.userIdDao = userIdDao;
+    }
+
+    @Override
+    public Integer getOneFreeId() {
+        return userIdDao.selectOne().getId();
+    }
+
+    @Override
+    public ArrayList<Integer> showAllIdsByStatus(Integer status) {
+        ArrayList<Integer> idsList = new ArrayList<>();
+        ArrayList<UserId> userIdArrayList = userIdDao.selectAllByStatus(status);
+        for (UserId userId : userIdArrayList) {
+            idsList.add(userId.getId());
+        }
+        if (idsList.size() != 0) {
+            return idsList;
+        } else {
+            return null;
+        }
     }
 }

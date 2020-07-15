@@ -12,11 +12,11 @@ public interface UserIdDao {
     // 获取所有指定状态的id
     ArrayList<UserId> selectAllByStatus(Integer flag);
     // 获取id状态
-    String selectStatusById(Integer id);
+    Integer selectStatusById(Integer id);
     // 查询最大的id值
     Integer selectMaxId();
     // 获取指定状态id的最大值
-    Integer selectMaxIdByStatus(String flag);
+    Integer selectMaxIdByStatus(Integer flag);
     /*增加*/
     // 增加对象
     int insertOne(UserId newUserId);
